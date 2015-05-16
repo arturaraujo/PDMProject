@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -22,6 +23,7 @@ import br.edu.ifpb.tsi.pdm.pdmproject.model.Tarefa;
 
 public class MainActivity extends Activity {
 	
+	private static final int ID_MENU_NOVA_TAREFA = 1;
 	private static final String MENU_NOVA_TAREFA = "Nova tarefa";
 //	private static final String MENU_NOVA_TAREFA = "Nova tarefa";
 
@@ -64,7 +66,21 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		menu.add(MENU_NOVA_TAREFA);
+		
+		menu.add(1, ID_MENU_NOVA_TAREFA, ID_MENU_NOVA_TAREFA, MENU_NOVA_TAREFA);
+		
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		super.onOptionsItemSelected(item);
+		
+		switch (item.getItemId()) {
+		case ID_MENU_NOVA_TAREFA:
+			break;
+		}
+		
 		return true;
 	}
 
