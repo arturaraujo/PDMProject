@@ -1,21 +1,29 @@
 package br.edu.ifpb.tsi.pdm.pdmproject;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+
+import org.apache.http.message.BasicNameValuePair;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import br.edu.ifpb.tsi.pdm.pdmproject.dao.TarefaDAO;
-import br.edu.ifpb.tsi.pdm.pdmproject.model.Atividade;
-import br.edu.ifpb.tsi.pdm.pdmproject.model.Disciplina;
 import br.edu.ifpb.tsi.pdm.pdmproject.model.Tarefa;
 
 public class MainActivity extends Activity {
+	
+	private static final String MENU_NOVA_TAREFA = "Nova tarefa";
+//	private static final String MENU_NOVA_TAREFA = "Nova tarefa";
 
 	private ListView lvProximasTarefas;
 
@@ -27,13 +35,37 @@ public class MainActivity extends Activity {
 		this.carregaComponentes();
 		
 		TarefaDAO daoTarefa = new TarefaDAO(this);
-		Atividade atividade = new Atividade("Prova");
-		Disciplina disciplina = new Disciplina("PDM");
+//		AtividadeDAO daoAtividade = new AtividadeDAO(this);
+//		DisciplinaDAO daoDisciplina = new DisciplinaDAO(this);
+//		
+//		Atividade atividade = new Atividade("Prova");
+//		Disciplina disciplina = new Disciplina("PDM");
+//		
+//		daoAtividade.inserir(atividade);
+//		daoDisciplina.inserir(disciplina);
+//		
+//		daoTarefa.inserir(new Tarefa(daoAtividade.ler(1), daoDisciplina.ler(1), Calendar.getInstance(), Calendar.getInstance()));
 		
-		daoTarefa.inserir(new Tarefa(atividade, disciplina, Calendar.getInstance(), Calendar.getInstance()));
+		List<String> string = new ArrayList<String>();
+		List<Tarefa> tarefas = daoTarefa.get();
 		
-		ArrayAdapter<Tarefa> adapter = new ArrayAdapter<Tarefa>(this, android.R.layout.simple_list_item_1, daoTarefa.get());
+		for (Tarefa f : tarefas){
+			StringBuilder builder = new StringBuilder();
+			builder.append(f.getAtividade().getNome() + " de ");
+			builder.append(f.getDisciplina().getNome() + ". \n");
+			builder.append("Data: " + f.getDataHora().get(Calendar.DAY_OF_MONTH) + "/" + f.getDataHora().get(Calendar.MONTH) + "/" + f.getDataHora().get(Calendar.YEAR));
+			string.add(builder.toString());
+		}
+		
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, string);
 		this.lvProximasTarefas.setAdapter(adapter);
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+		menu.add(MENU_NOVA_TAREFA);
+		return true;
 	}
 
 	private void carregaComponentes() {
