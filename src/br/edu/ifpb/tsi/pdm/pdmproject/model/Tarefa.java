@@ -16,6 +16,11 @@ public class Tarefa {
 	public void setDataHoraNotificacao(Calendar dataHoraNotificacao) {
 		this.dataHoraNotificacao = dataHoraNotificacao;
 	}
+	
+	public void setDataHoraNotificacao(long dataHoraNotificacao) {
+		this.dataHoraNotificacao = Calendar.getInstance();
+		this.dataHoraNotificacao.setTimeInMillis(dataHoraNotificacao);
+	}
 
 	public int getId() {
 		return id;
@@ -48,5 +53,11 @@ public class Tarefa {
 	public void setDataHora(Calendar dataHora) {
 		this.dataHora = dataHora;
 	}
+	
+	public void setDataHora(long dataHora) {
+		this.dataHora = Calendar.getInstance();
+		this.dataHora.setTimeInMillis(dataHora);
+	}
+	
 
 }

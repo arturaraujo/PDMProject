@@ -3,5 +3,6 @@
 
     <string name="app_name">PDM Project</string>
     <string name="hello_world">Hello world!</string>
+    <string name="strProximasTarefas">Proximas Tarefas</string>
 
 </resources>
