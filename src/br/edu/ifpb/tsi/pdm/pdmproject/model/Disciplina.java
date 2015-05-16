@@ -1,6 +1,14 @@
 package br.edu.ifpb.tsi.pdm.pdmproject.model;
 
 public class Disciplina {
+	public Disciplina(String nome) {
+		super();
+		this.nome = nome;
+	}
+
+	public Disciplina() {
+	}
+
 	private int id;
 	private String nome;
 

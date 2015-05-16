@@ -9,6 +9,18 @@ public class Tarefa {
 	private Calendar dataHora;
 	private Calendar dataHoraNotificacao;
 
+	public Tarefa(Atividade atividade, Disciplina disciplina,
+			Calendar dataHora, Calendar dataHoraNotificacao) {
+		super();
+		this.atividade = atividade;
+		this.disciplina = disciplina;
+		this.dataHora = dataHora;
+		this.dataHoraNotificacao = dataHoraNotificacao;
+	}
+	
+	public Tarefa() {
+	}
+
 	public Calendar getDataHoraNotificacao() {
 		return dataHoraNotificacao;
 	}

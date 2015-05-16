@@ -13,9 +13,11 @@ public class TarefaDAO {
 	private static final String TABELA_TAREFA = "tarefa";
 	
 	private SQLiteDatabase banco;
+	private Context context;
 
 	public TarefaDAO(Context context) {
 		this.banco = new BancoHelper(context).getWritableDatabase();
+		this.context = context;
 	}
 	
 	public void inserir(Tarefa tarefa){
@@ -40,8 +42,8 @@ public class TarefaDAO {
 		Tarefa tarefa;
 		if(c.getCount() > 0){
 			c.moveToFirst();
-			DisciplinaDAO daoDisciplina = new DisciplinaDAO(null);
-			AtividadeDAO daoAtividade = new AtividadeDAO(null);
+			DisciplinaDAO daoDisciplina = new DisciplinaDAO(context);
+			AtividadeDAO daoAtividade = new AtividadeDAO(context);
 			do{
 				tarefa = new Tarefa();
 				tarefa.setId(c.getInt(c.getColumnIndex("id")));

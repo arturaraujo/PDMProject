@@ -1,6 +1,14 @@
 package br.edu.ifpb.tsi.pdm.pdmproject.model;
 
 public class Atividade {
+	public Atividade(String nome) {
+		super();
+		this.nome = nome;
+	}
+
+	public Atividade() {
+	}
+
 	private int id;
 	private String nome;
 
