@@ -20,8 +20,8 @@ public class BancoHelper extends SQLiteOpenHelper {
 				"CREATE TABLE disciplina (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, nome TEXT)",
 
 				"CREATE TABLE tarefa (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, id_atividade INTEGER, "
-						+ "id_disciplina INTEGER, dataHora DATETIME, dataHoraNotificacao DATETIME) "
-						+ "FOREIGN KEY(id_disciplina) REFERENCES disciplina(id) "
+						+ "id_disciplina INTEGER, dataHora DATETIME, dataHoraNotificacao DATETIME), "
+						+ "FOREIGN KEY(id_disciplina) REFERENCES disciplina(id), "
 						+ "FOREIGN KEY(id_atividade) REFERENCES atividade(id) " };
 
 		for (String s : sql) {
