@@ -47,7 +47,7 @@ public class TarefaDAO {
 			do{
 				tarefa = new Tarefa();
 				tarefa.setId(c.getInt(c.getColumnIndex("id")));
-				tarefa.setAtividade(daoAtividade.ler(c.getInt(c.getColumnIndex("id_disciplina"))));
+				tarefa.setAtividade(daoAtividade.ler(c.getInt(c.getColumnIndex("id_atividade"))));
 				tarefa.setDisciplina(daoDisciplina.ler(c.getInt(c.getColumnIndex("id_disciplina"))));
 				tarefa.setDataHora(c.getLong(c.getColumnIndex("dataHora")));
 				tarefa.setDataHoraNotificacao(c.getLong(c.getColumnIndex("dataHoraNotificacao")));
