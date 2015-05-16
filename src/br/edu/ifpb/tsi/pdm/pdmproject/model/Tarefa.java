@@ -71,5 +71,12 @@ public class Tarefa {
 		this.dataHora.setTimeInMillis(dataHora);
 	}
 	
-
+	public String toString(){
+		StringBuilder string = new StringBuilder();
+		string.append(getAtividade().toString() + " de ");
+		string.append(this.disciplina + ". \n");
+		string.append("Data: " + this.dataHora.get(Calendar.DAY_OF_MONTH) + "/" +this.dataHora.get(Calendar.MONTH) + "/" + this.dataHora.get(Calendar.YEAR));
+		
+		return string.toString();
+	}
 }

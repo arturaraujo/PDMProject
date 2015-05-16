@@ -28,4 +28,8 @@ public class Atividade {
 		this.nome = nome;
 	}
 
+	@Override
+	public String toString() {
+		return this.nome;
+	}
 }
