@@ -37,4 +37,10 @@ public class BancoHelper extends SQLiteOpenHelper {
 		}
 		onCreate(db);
 	}
+	
+	@Override
+	public synchronized void close() {
+		// TODO Auto-generated method stub
+		super.close();
+	}
 }

@@ -1,5 +1,6 @@
 package br.edu.ifpb.tsi.pdm.pdmproject.dao;
 
+import java.io.Closeable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import br.edu.ifpb.tsi.pdm.pdmproject.model.Disciplina;
 
-public class DisciplinaDAO {
+public class DisciplinaDAO{
 	private static final String TABELA_DISCIPLINA = "disciplina";
 
 	private SQLiteDatabase banco;
@@ -62,5 +63,9 @@ public class DisciplinaDAO {
 			} while (c.moveToNext());
 		}
 		return lista;
+	}
+	
+	public void close(){
+		banco.close();
 	}
 }

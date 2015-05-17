@@ -54,6 +54,7 @@ public class TarefaDAO {
 				
 				lista.add(tarefa);
 			} while(c.moveToNext());
+			daoDisciplina.close();
 		}
 		return lista;
 	}
