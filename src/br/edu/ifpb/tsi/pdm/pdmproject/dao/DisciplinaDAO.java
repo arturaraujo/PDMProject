@@ -1,6 +1,5 @@
 package br.edu.ifpb.tsi.pdm.pdmproject.dao;
 
-import java.io.Closeable;
 import java.util.ArrayList;
 import java.util.List;
 
