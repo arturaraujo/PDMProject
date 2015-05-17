@@ -21,8 +21,9 @@ import br.edu.ifpb.tsi.pdm.pdmproject.model.Tarefa;
 public class MainActivity extends Activity {
 	
 	private static final int ID_MENU_NOVA_TAREFA = 1;
+	private static final int ID_MENU_GERENCIAR_DISCIPLINA = 2;
 	private static final String MENU_NOVA_TAREFA = "Nova tarefa";
-//	private static final String MENU_NOVA_TAREFA = "Nova tarefa";
+	private static final String MENU_GERENCIAR_DISCIPLINA = "Gerenciar Disciplinas";
 
 	private ListView lvProximasTarefas;
 
@@ -34,16 +35,6 @@ public class MainActivity extends Activity {
 		this.carregaComponentes();
 		
 		TarefaDAO daoTarefa = new TarefaDAO(this);
-//		AtividadeDAO daoAtividade = new AtividadeDAO(this);
-//		DisciplinaDAO daoDisciplina = new DisciplinaDAO(this);
-//		
-//		Atividade atividade = new Atividade("Prova");
-//		Disciplina disciplina = new Disciplina("PDM");
-//		
-//		daoAtividade.inserir(atividade);
-//		daoDisciplina.inserir(disciplina);
-//		
-//		daoTarefa.inserir(new Tarefa(daoAtividade.ler(1), daoDisciplina.ler(1), Calendar.getInstance(), Calendar.getInstance()));
 		
 		List<String> string = new ArrayList<String>();
 		List<Tarefa> tarefas = daoTarefa.get();
@@ -65,6 +56,7 @@ public class MainActivity extends Activity {
 		super.onCreateOptionsMenu(menu);
 		
 		menu.add(1, ID_MENU_NOVA_TAREFA, ID_MENU_NOVA_TAREFA, MENU_NOVA_TAREFA);
+		menu.add(1, ID_MENU_GERENCIAR_DISCIPLINA, ID_MENU_GERENCIAR_DISCIPLINA, MENU_GERENCIAR_DISCIPLINA);
 		
 		return true;
 	}
