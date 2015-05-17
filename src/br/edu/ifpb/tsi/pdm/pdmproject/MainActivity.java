@@ -4,20 +4,17 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import org.apache.http.message.BasicNameValuePair;
-
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import br.edu.ifpb.tsi.pdm.pdmproject.dao.TarefaDAO;
 import br.edu.ifpb.tsi.pdm.pdmproject.model.Tarefa;
 
@@ -78,6 +75,7 @@ public class MainActivity extends Activity {
 		
 		switch (item.getItemId()) {
 		case ID_MENU_NOVA_TAREFA:
+			startActivity(new Intent(this, NovaTarefaActivity.class));
 			break;
 		}
 		
