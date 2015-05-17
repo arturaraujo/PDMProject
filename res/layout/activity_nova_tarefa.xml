@@ -13,13 +13,13 @@
         <TextView
             android:id="@+id/tvDisciplina"
             android:layout_width="0dp"
-            android:layout_weight="4"
             android:layout_height="wrap_content"
-            android:text="@string/strDisciplina"
+            android:layout_weight="4"
+            android:text="@string/strAtividade"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Spinner
-            android:id="@+id/spnTarefa"
+            android:id="@+id/spnAtividade"
             android:layout_width="0dp"
             android:layout_weight="6"
             android:layout_height="wrap_content" />

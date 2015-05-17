@@ -6,5 +6,6 @@
     <string name="strProximasTarefas">Proximas Tarefas</string>
     <string name="title_activity_nova_tarefa">NovaTarefaActivity</string>
     <string name="strDisciplina">Disciplina</string>
+    <string name="strAtividade">Atividade: </string>
 
 </resources>
