@@ -9,5 +9,6 @@
     <string name="strAtividade">Atividade: </string>
     <string name="strDataHora">Data / Hora</string>
     <string name="strLembrete">Lembrete</string>
+    <string name="strOk">OK</string>
 
 </resources>

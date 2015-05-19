@@ -70,12 +70,6 @@
 
     </LinearLayout>
     
-     <LinearLayout
-         android:layout_width="match_parent"
-         android:layout_height="0dp"
-         android:layout_weight="2" >
-     </LinearLayout>
-    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -88,11 +82,13 @@
             android:text="@string/strLembrete"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <DatePicker
-            android:id="@+id/datePicker2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnOkNovaTarefa"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/strOk" />
 
 </LinearLayout>
