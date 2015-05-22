@@ -25,20 +25,15 @@ import br.edu.ifpb.tsi.pdm.pdmproject.model.Tarefa;
 
 public class NovaTarefaActivity extends Activity {
 	
-	Spinner spnAtividade, spnDisciplina;
+	Spinner atividade, disciplina;
 	EditText etDataTarefa;
 	Button btnCriar;
-	Calendar c = Calendar.getInstance(); //TODO tirar isso
+	Calendar c = Calendar.getInstance();
 	int posicaoTarefa;
 	
-	AtividadeDAO daoAtividade;
-	DisciplinaDAO daoDisciplina;
-	TarefaDAO daoTarefa;
-	private int posicaoAtividade, posicaoDisciplina;
-	
-	List<Disciplina> disciplinas;
-	List<Atividade> atividades;
-	
+	AtividadeDAO daoAtividade = new AtividadeDAO(this);
+	DisciplinaDAO daoDisciplina = new DisciplinaDAO(this);
+	TarefaDAO daoTarefa = new TarefaDAO(this);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,28 +41,21 @@ public class NovaTarefaActivity extends Activity {
 		setContentView(R.layout.activity_nova_tarefa);
 		this.carrregaComponentes();
 		this.setListeners();
-		this.carregaBanco();
 		
-		this.atividades = daoAtividade.get();
-		setSpinnerAtividade(spnAtividade, atividades);
+		List<Atividade> atividades = daoAtividade.get();
+		setSpinnerAtividade(atividade, atividades);
 
-		this.disciplinas = daoDisciplina.get();
-		setSpinnerDisciplina(spnDisciplina, disciplinas);
+		List<Disciplina> disciplinas = daoDisciplina.get();
+		setSpinnerDisciplina(disciplina, disciplinas);
 		
 		//TODO Setar datas
-		//TODO Setar as notificaï¿½ï¿½es
+		//TODO Setar pra ajustar as notificações
 
-	}
-	
-	private void carregaBanco(){
-		this.daoAtividade = new AtividadeDAO(this);
-		this.daoDisciplina = new DisciplinaDAO(this);
-		this.daoTarefa = new TarefaDAO(this);
 	}
 
 	private void carrregaComponentes(){
-		this.spnAtividade = (Spinner) findViewById(R.id.spnAtividade);
-		this.spnDisciplina = (Spinner) findViewById(R.id.spnDisciplina);
+		this.atividade = (Spinner) findViewById(R.id.spnAtividade);
+		this.disciplina = (Spinner) findViewById(R.id.spnDisciplina);
 		this.etDataTarefa = (EditText) findViewById(R.id.etDataTarefa);
 		this.btnCriar = (Button) findViewById(R.id.btnOkNovaTarefa);
 	}
@@ -91,7 +79,7 @@ public class NovaTarefaActivity extends Activity {
 		adapterDisciplina.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapterDisciplina);
 		
-		spinner.setOnItemSelectedListener(new DisciplinaListener());
+		spinner.setOnItemSelectedListener(new AtividadeListener());
 	}
 	
 	
@@ -99,19 +87,7 @@ public class NovaTarefaActivity extends Activity {
 	public class AtividadeListener implements OnItemSelectedListener {
 		@Override
 	    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-			posicaoAtividade = pos;
-	    }
-
-		@Override
-	    public void onNothingSelected(AdapterView parent) {
-	       Log.w("tag", "Passou em nothing selected");
-	    }
-	}
-	
-	public class DisciplinaListener implements OnItemSelectedListener {
-		@Override
-	    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-			posicaoDisciplina = pos;
+			posicaoTarefa = pos;
 	    }
 
 		@Override
@@ -124,14 +100,17 @@ public class NovaTarefaActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
+			Atividade atividade = daoAtividade.ler(1);
+			Disciplina disciplina = daoDisciplina.ler(1);
+			
 			c.add(Calendar.DATE, 1);
 			Calendar notificacao = Calendar.getInstance();
 			notificacao.add(Calendar.MINUTE, 1);
-			Tarefa tarefa =  new Tarefa(atividades.get(posicaoAtividade), disciplinas.get(posicaoDisciplina), c, notificacao);
+			Tarefa tarefa =  new Tarefa(atividade, disciplina, c, notificacao);
 			
 			daoTarefa.inserir(tarefa);
 			
-			//TODO gerar notificaï¿½ï¿½o pra data setada.
+			//TODO gerar notificação pra data setada.
 		}
 
 	}
